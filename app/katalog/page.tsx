@@ -173,26 +173,44 @@ export default function KatalogPage() {
   };
 
   return (
-    <main className="min-h-screen bg-[#F8FAFC] text-slate-800 font-sans pb-20">
-      <header className="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-100 shadow-sm">
-        <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-          <div>
-            <p className="text-[10px] font-extrabold tracking-widest text-emerald-600 uppercase">
-              PPK ORMAWA BEM FK UNNES
-            </p>
-            <h1 className="text-lg font-black text-slate-900">Ensiklopedi Katalog TOGA</h1>
+    <main className="min-h-screen text-slate-800 font-sans relative overflow-hidden pb-20">
+      
+      {/* Background Foto 71 dengan Blur Elegan */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center fixed z-0 filter blur-[8px] scale-105"
+        style={{ backgroundImage: `url('/foto/71.JPG')` }}
+      />
+      
+      {/* Overlay Putih Cerah */}
+      <div className="absolute inset-0 bg-white/85 backdrop-blur-[2px] fixed z-0" />
+
+      {/* Header */}
+      <header className="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200 shadow-sm">
+        <div className="max-w-[1440px] mx-auto px-6 lg:px-12 py-4 flex justify-between items-center relative z-10">
+          <div className="flex items-center space-x-3">
+            <div className="w-10 h-10 rounded-2xl bg-emerald-600 flex items-center justify-center text-white font-black text-xl shadow-md">
+              🌱
+            </div>
+            <div>
+              <p className="text-[10px] font-extrabold tracking-widest text-emerald-600 uppercase">
+                PPK ORMAWA BEM FK UNNES
+              </p>
+              <h1 className="text-base font-black text-slate-900">
+                Ensiklopedi Katalog TOGA
+              </h1>
+            </div>
           </div>
 
           <div className="flex items-center space-x-3">
             <button
               onClick={() => setStep("auth")}
-              className="text-xs font-bold text-white bg-emerald-600 hover:bg-emerald-700 px-4 py-2.5 rounded-xl transition shadow-md shadow-emerald-600/20"
+              className="text-xs font-bold text-white bg-emerald-600 hover:bg-emerald-700 px-4 py-2.5 rounded-2xl transition shadow-md shadow-emerald-600/20"
             >
               + Tambah Tanaman RW
             </button>
             <Link 
               href="/" 
-              className="text-xs font-bold text-emerald-600 hover:text-emerald-700 bg-emerald-50 px-4 py-2.5 rounded-xl transition"
+              className="text-xs font-bold text-emerald-700 hover:text-emerald-800 bg-emerald-50 px-4 py-2.5 rounded-2xl transition border border-emerald-100"
             >
               ← Dashboard
             </Link>
@@ -200,37 +218,42 @@ export default function KatalogPage() {
         </div>
       </header>
 
-      <section className="max-w-6xl mx-auto px-6 py-10 space-y-8">
-        <div className="text-center max-w-2xl mx-auto mb-12">
-          <span className="bg-emerald-100 text-emerald-800 text-xs font-black px-3 py-1 rounded-full uppercase tracking-wider">
+      {/* Main Content (Lebar Penuh 1440px) */}
+      <section className="max-w-[1440px] mx-auto px-6 lg:px-12 pt-10 space-y-10 relative z-10">
+        
+        {/* Hero Section Katalog */}
+        <div className="bg-white/90 backdrop-blur-xl p-8 md:p-12 rounded-3xl border border-white shadow-xl shadow-slate-900/5 text-center max-w-3xl mx-auto">
+          <span className="bg-emerald-100 text-emerald-800 text-xs font-black px-3.5 py-1.5 rounded-full uppercase tracking-wider">
             Edukasi & Pustaka Tanaman Warga
           </span>
-          <h2 className="text-3xl font-black text-slate-900 mt-3">Kenali Jenis Tanaman Obat Keluarga</h2>
-          <p className="text-sm text-slate-500 mt-2 leading-relaxed">
+          <h2 className="text-3xl md:text-4xl font-black text-slate-900 mt-4 tracking-tight">
+            Kenali Jenis Tanaman Obat Keluarga
+          </h2>
+          <p className="text-sm text-slate-500 mt-3 leading-relaxed">
             Pusat informasi digital interaktif. Scan barcode di samping tanaman untuk langsung membaca khasiat dan panduan perawatannya.
           </p>
         </div>
 
         {loading ? (
-          <div className="text-center py-20 bg-white rounded-3xl border border-slate-100 shadow-sm">
+          <div className="text-center py-20 bg-white/90 rounded-3xl border border-white shadow-sm">
             <p className="text-sm font-semibold text-slate-500 animate-pulse">Memuat data katalog tanaman...</p>
           </div>
         ) : katalogList.length === 0 ? (
-          <div className="text-center py-20 bg-white rounded-3xl border border-slate-100 shadow-sm">
+          <div className="text-center py-20 bg-white/90 rounded-3xl border border-white shadow-sm">
             <p className="text-base font-bold text-slate-700">Belum ada katalog tanaman yang ditambahkan.</p>
             <p className="text-sm text-slate-400 mt-1">Silakan verifikasi RW dan klik tombol "Tambah Tanaman RW" di atas.</p>
           </div>
         ) : (
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {katalogList.map((item) => (
-              <div key={item.id} className="bg-white rounded-3xl p-8 border border-slate-100 shadow-sm hover:shadow-lg transition flex flex-col justify-between relative group">
+              <div key={item.id} className="bg-white/90 backdrop-blur-xl rounded-3xl p-8 border border-white shadow-xl shadow-slate-900/5 hover:shadow-2xl transition flex flex-col justify-between">
                 <div>
                   <div className="flex justify-between items-start mb-6">
                     <div className="w-16 h-16 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-3xl shadow-inner">
                       {item.icon || "🌿"}
                     </div>
                     <div className="flex flex-col items-end space-y-1">
-                      <span className="text-[10px] font-black bg-emerald-100 text-emerald-800 px-2.5 py-1 rounded-full">
+                      <span className="text-[10px] font-black bg-emerald-100 text-emerald-800 px-3 py-1 rounded-full uppercase">
                         {item.rw || "RW 01"}
                       </span>
                       <span className="text-[10px] font-semibold text-slate-400">
@@ -255,7 +278,7 @@ export default function KatalogPage() {
                 </div>
 
                 <div className="mt-6 space-y-4">
-                  <div className="bg-emerald-50/50 p-4 rounded-2xl border border-emerald-100 text-xs text-slate-600">
+                  <div className="bg-emerald-50/60 p-4 rounded-2xl border border-emerald-100/60 text-xs text-slate-600">
                     <strong className="text-slate-900 block font-bold mb-1">🌱 Tips Perawatan:</strong>
                     <p>{item.perawatan}</p>
                   </div>
@@ -263,13 +286,13 @@ export default function KatalogPage() {
                   <div className="flex justify-end space-x-2 pt-2">
                     <button
                       onClick={() => handleOpenEdit(item)}
-                      className="text-xs font-bold text-amber-600 bg-amber-50 hover:bg-amber-100 px-3 py-1.5 rounded-xl transition border border-amber-200"
+                      className="text-xs font-bold text-amber-700 bg-amber-50 hover:bg-amber-100 px-3.5 py-2 rounded-xl transition border border-amber-200"
                     >
                       ✏️ Edit
                     </button>
                     <button
                       onClick={() => handleDelete(item)}
-                      className="text-xs font-bold text-red-600 bg-red-50 hover:bg-red-100 px-3 py-1.5 rounded-xl transition border border-red-200"
+                      className="text-xs font-bold text-red-600 bg-red-50 hover:bg-red-100 px-3.5 py-2 rounded-xl transition border border-red-200"
                     >
                       🗑️ Hapus
                     </button>
@@ -281,7 +304,7 @@ export default function KatalogPage() {
         )}
       </section>
 
-      {/* MODAL AUTH RW + NAMA PENGINPUT */}
+      {/* MODAL AUTH RW */}
       {step === "auth" && (
         <div className="fixed inset-0 z-50 bg-slate-950/60 backdrop-blur-sm flex items-center justify-center p-6">
           <div className="bg-white rounded-3xl max-w-md w-full p-8 shadow-2xl">
@@ -298,7 +321,7 @@ export default function KatalogPage() {
                   placeholder="Contoh: Ibu Siti / Budi Santoso"
                   value={namaPenginput}
                   onChange={(e) => setNamaPenginput(e.target.value)}
-                  className="w-full border rounded-xl p-3 bg-slate-50"
+                  className="w-full border rounded-2xl p-3.5 bg-slate-50 font-medium"
                   required
                 />
               </div>
@@ -308,7 +331,7 @@ export default function KatalogPage() {
                 <select
                   value={selectedRw}
                   onChange={(e) => setSelectedRw(e.target.value)}
-                  className="w-full border rounded-xl p-3 bg-slate-50 font-bold"
+                  className="w-full border rounded-2xl p-3.5 bg-slate-50 font-bold"
                 >
                   <option value="RW 01">RW 01</option>
                   <option value="RW 02">RW 02</option>
@@ -326,7 +349,7 @@ export default function KatalogPage() {
                   placeholder="Masukkan password..."
                   value={passwordInput}
                   onChange={(e) => setPasswordInput(e.target.value)}
-                  className="w-full border rounded-xl p-3 bg-slate-50"
+                  className="w-full border rounded-2xl p-3.5 bg-slate-50 font-medium"
                   required
                 />
               </div>
@@ -383,7 +406,7 @@ export default function KatalogPage() {
                     placeholder="Contoh: Kencur"
                     value={nama}
                     onChange={(e) => setNama(e.target.value)}
-                    className="w-full border rounded-xl p-3 bg-slate-50"
+                    className="w-full border rounded-2xl p-3 bg-slate-50 font-medium"
                     required
                   />
                 </div>
@@ -394,7 +417,7 @@ export default function KatalogPage() {
                     placeholder="Contoh: Kaempferia galanga"
                     value={latin}
                     onChange={(e) => setLatin(e.target.value)}
-                    className="w-full border rounded-xl p-3 bg-slate-50"
+                    className="w-full border rounded-2xl p-3 bg-slate-50 font-medium"
                   />
                 </div>
               </div>
@@ -407,7 +430,7 @@ export default function KatalogPage() {
                     placeholder="Contoh: Tanaman Rimpang"
                     value={kategori}
                     onChange={(e) => setKategori(e.target.value)}
-                    className="w-full border rounded-xl p-3 bg-slate-50"
+                    className="w-full border rounded-2xl p-3 bg-slate-50 font-medium"
                     required
                   />
                 </div>
@@ -418,7 +441,7 @@ export default function KatalogPage() {
                     placeholder="🌿 / 🌺 / 🍠"
                     value={icon}
                     onChange={(e) => setIcon(e.target.value)}
-                    className="w-full border rounded-xl p-3 bg-slate-50"
+                    className="w-full border rounded-2xl p-3 bg-slate-50 font-medium"
                   />
                 </div>
               </div>
@@ -429,7 +452,7 @@ export default function KatalogPage() {
                   placeholder="Penjelasan umum mengenai tanaman..."
                   value={deskripsi}
                   onChange={(e) => setDeskripsi(e.target.value)}
-                  className="w-full border rounded-xl p-3 bg-slate-50 h-20"
+                  className="w-full border rounded-2xl p-3 bg-slate-50 h-20 font-medium"
                   required
                 />
               </div>
@@ -440,7 +463,7 @@ export default function KatalogPage() {
                   placeholder="Sebutkan khasiat utamanya..."
                   value={manfaat}
                   onChange={(e) => setManfaat(e.target.value)}
-                  className="w-full border rounded-xl p-3 bg-slate-50 h-20"
+                  className="w-full border rounded-2xl p-3 bg-slate-50 h-20 font-medium"
                   required
                 />
               </div>
@@ -451,7 +474,7 @@ export default function KatalogPage() {
                   placeholder="Cara penyiraman atau kondisi tanah yang dibutuhkan..."
                   value={perawatan}
                   onChange={(e) => setPerawatan(e.target.value)}
-                  className="w-full border rounded-xl p-3 bg-slate-50 h-20"
+                  className="w-full border rounded-2xl p-3 bg-slate-50 h-20 font-medium"
                   required
                 />
               </div>
