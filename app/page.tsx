@@ -20,7 +20,7 @@ export default function DashboardPage() {
     <main className="min-h-screen bg-[#F8FAFC] text-slate-800 font-sans selection:bg-emerald-500 selection:text-white">
       {/* Navbar */}
       <header className="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-100 shadow-sm">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 py-4 flex justify-between items-center">
+        <div className="max-w-[1440px] mx-auto px-6 lg:px-12 py-4 flex justify-between items-center">
           <div className="flex items-center space-x-3">
             <div className="w-11 h-11 rounded-2xl bg-emerald-600 flex items-center justify-center text-white font-black text-xl shadow-lg shadow-emerald-600/20">🌱</div>
             <div>
@@ -37,7 +37,7 @@ export default function DashboardPage() {
       </header>
 
       {/* Hero Section */}
-      <section className="max-w-7xl mx-auto px-6 lg:px-8 pt-8 pb-4">
+      <section className="max-w-[1440px] mx-auto px-6 lg:px-12 pt-8 pb-4">
         <div className="relative overflow-hidden rounded-3xl shadow-2xl shadow-emerald-950/15 min-h-[460px] flex items-center border border-slate-100">
           <div className="absolute inset-0 bg-cover bg-center z-0 scale-105 transform transition-transform duration-1000" style={{ backgroundImage: `url('/foto/IMG_1943.JPG')` }}></div>
           <div className="absolute inset-0 bg-gradient-to-r from-slate-950/95 via-slate-950/80 to-slate-950/40 z-10"></div>
@@ -54,7 +54,7 @@ export default function DashboardPage() {
       </section>
 
       {/* Statistik */}
-      <section className="max-w-7xl mx-auto px-6 lg:px-8 py-6">
+      <section className="max-w-[1440px] mx-auto px-6 lg:px-12 py-6">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
           {[ { label: "Total RW Binaan", val: "6 RW", sub: "100% Aktif Melapor" }, { label: "Bibit Tertanam", val: "480+", sub: "Jenis TOGA Produktif" }, { label: "Indeks Kesehatan", val: "91.8", sub: "Kategori Sangat Baik" }, { label: "Sistem Status", val: "Live", sub: "Sinkronisasi Real-time" } ].map((item, i) => (
             <div key={i} className="bg-white p-7 rounded-3xl border border-slate-100 shadow-sm hover:shadow-md transition">
@@ -67,7 +67,7 @@ export default function DashboardPage() {
       </section>
 
       {/* Analitik & Leaderboard */}
-      <section className="max-w-7xl mx-auto px-6 lg:px-8 py-6">
+      <section className="max-w-[1440px] mx-auto px-6 lg:px-12 py-6">
         <div className="grid md:grid-cols-2 gap-8">
           <div className="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm">
             <h3 className="text-lg font-black text-slate-900 mb-6">Leaderboard Performa RW</h3>
@@ -84,7 +84,7 @@ export default function DashboardPage() {
       </section>
 
       {/* Modul */}
-      <section className="max-w-7xl mx-auto px-6 lg:px-8 py-6 mb-12">
+      <section className="max-w-[1440px] mx-auto px-6 lg:px-12 py-6 mb-12">
         <h3 className="text-2xl font-black text-slate-900 tracking-tight mb-6">Modul & Navigasi Utama</h3>
         <div className="grid md:grid-cols-3 gap-6">
           {[ { icon: "📝", title: "Input Monitoring", desc: "Perbarui data perkembangan bibit harian.", link: "/login?redirect=/input", color: "text-emerald-600" }, { icon: "📊", title: "Hasil Monitoring", desc: "Rekapitulasi data kesehatan tanaman secara terbuka.", link: "/hasil", color: "text-blue-600" }, { icon: "🌿", title: "Katalog TOGA", desc: "Ensiklopedi digital tanaman obat keluarga.", link: "/katalog", color: "text-amber-600" } ].map((card, i) => (
