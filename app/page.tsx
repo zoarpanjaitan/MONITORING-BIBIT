@@ -30,6 +30,8 @@ export default function DashboardPage() {
           </div>
           <div className="hidden md:flex items-center space-x-6 text-sm font-semibold text-slate-600">
             <Link href="/hasil" className="hover:text-emerald-600 transition">Hasil Monitoring</Link>
+            {/* Tambahan Menu Kelola Tanaman TOGA di sini */}
+            <Link href="/login?redirect=/kelola-tanaman" className="hover:text-emerald-600 transition">Kelola Tanaman TOGA</Link>
             <Link href="/katalog" className="hover:text-emerald-600 transition">Katalog TOGA</Link>
             <Link href="/login?redirect=/input" className="bg-emerald-600 text-white px-5 py-3 rounded-2xl shadow-lg shadow-emerald-600/20 hover:bg-emerald-700 transition font-bold">Login Admin RW</Link>
           </div>
@@ -86,8 +88,14 @@ export default function DashboardPage() {
       {/* Modul */}
       <section className="max-w-[1440px] mx-auto px-6 lg:px-12 py-6 mb-12">
         <h3 className="text-2xl font-black text-slate-900 tracking-tight mb-6">Modul & Navigasi Utama</h3>
-        <div className="grid md:grid-cols-3 gap-6">
-          {[ { icon: "📝", title: "Input Monitoring", desc: "Perbarui data perkembangan bibit harian.", link: "/login?redirect=/input", color: "text-emerald-600" }, { icon: "📊", title: "Hasil Monitoring", desc: "Rekapitulasi data kesehatan tanaman secara terbuka.", link: "/hasil", color: "text-blue-600" }, { icon: "🌿", title: "Katalog TOGA", desc: "Ensiklopedi digital tanaman obat keluarga.", link: "/katalog", color: "text-amber-600" } ].map((card, i) => (
+        {/* Ubah grid jadi 4 kolom agar pas dengan menu baru */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {[ 
+            { icon: "📝", title: "Input Monitoring", desc: "Perbarui data perkembangan bibit harian.", link: "/login?redirect=/input", color: "text-emerald-600" }, 
+            { icon: "📊", title: "Hasil Monitoring", desc: "Rekapitulasi data kesehatan tanaman secara terbuka.", link: "/hasil", color: "text-blue-600" }, 
+            { icon: "⚙️", title: "Kelola Tanaman", desc: "Atur target jenis dan jumlah tanaman mandiri.", link: "/login?redirect=/kelola-tanaman", color: "text-purple-600" },
+            { icon: "🌿", title: "Katalog TOGA", desc: "Ensiklopedi digital tanaman obat keluarga.", link: "/katalog", color: "text-amber-600" } 
+          ].map((card, i) => (
             <Link key={i} href={card.link} className="group bg-white rounded-3xl p-8 border border-slate-100 hover:border-emerald-500/50 hover:shadow-xl transition-all flex flex-col justify-between">
               <div>
                 <div className={`w-14 h-14 rounded-2xl bg-slate-50 ${card.color} flex items-center justify-center text-2xl font-bold mb-6 group-hover:scale-110 transition-transform`}>{card.icon}</div>

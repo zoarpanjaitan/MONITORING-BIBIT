@@ -1,11 +1,14 @@
 "use client";
 
-import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useState, Suspense } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 
-export default function LoginPage() {
+function LoginForm() {
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const redirectTo = searchParams.get("redirect") || "/input";
+
   const [rw, setRw] = useState("RW 01");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -19,7 +22,7 @@ export default function LoginPage() {
     setTimeout(() => {
       if (password === "admin123") {
         localStorage.setItem("user_rw", rw);
-        router.push("/input");
+        router.push(redirectTo);
       } else {
         setError("Password salah! (Gunakan: admin123)");
         setIsLoading(false);
@@ -84,10 +87,18 @@ export default function LoginPage() {
             disabled={isLoading}
             className="w-full bg-emerald-600 hover:bg-emerald-500 text-white p-4 rounded-2xl font-bold transition shadow-lg shadow-emerald-600/20 text-sm disabled:opacity-50"
           >
-            {isLoading ? "Memproses..." : "Masuk ke Halaman Input →"}
+            {isLoading ? "Memproses..." : "Masuk ke Sistem →"}
           </button>
         </form>
       </div>
     </main>
+  );
+}
+
+export default function LoginPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-slate-950 text-white flex items-center justify-center">Memuat...</div>}>
+      <LoginForm />
+    </Suspense>
   );
 }
